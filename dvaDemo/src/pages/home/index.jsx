@@ -13,7 +13,7 @@ const { confirm } = Modal;
 export default class Home extends Component {
   state = {
     visible: false,
-    title: "",
+    title: '',
     dataInfo: [],
   };
   addClick = () => {
@@ -154,7 +154,6 @@ export default class Home extends Component {
             >
               <Input />
             </Form.Item>
-
             <Form.Item wrapperCol={{ offset: 15 }}>
               <Button style={{ marginRight: "30px" }} onClick={this.showModal}>
                 取消

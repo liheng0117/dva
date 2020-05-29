@@ -1,14 +1,13 @@
 import { getList, addList, delList, updateList } from '@/services/home';
 
 export default {
-  namespace: "home",
+  namespace: 'home',
   state: {
     listData: [],
   },
 
   subscriptions: {
     setup({ dispatch, history }) {
-      // eslint-disable-line
     },
   },
 
@@ -48,7 +47,6 @@ export default {
       }
     },
   },
-
   reducers: {
     getList(state, action) {
       return { ...state, listData: action.payload };
