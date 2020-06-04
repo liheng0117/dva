@@ -12,6 +12,7 @@
     "babel-plugin-import": "^1.13.0",
     "dva": "^2.4.1",
     "history": "^4.10.1",
+    "path-to-regexp": "^6.1.0",
     "qs": "^6.9.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

@@ -1,16 +1,22 @@
-import { getList, addList, delList, updateList } from '@/services/home';
+import { getList, addList, delList, updateList } from "@/services/home";
+const { pathToRegexp } = require("path-to-regexp");
 
 export default {
-  namespace: 'home',
+  namespace: "home",
   state: {
     listData: [],
   },
-
+  // 监听器  监听路由变化
   subscriptions: {
     setup({ dispatch, history }) {
+      history.listen(({ pathname }) => {
+        const regexp = pathToRegexp("/").exec(pathname);
+        if (regexp) {
+          dispatch({ type: "getDataList" });
+        }
+      });
     },
   },
-
   effects: {
     *getDataList({ payload }, { call, put }) {
       const data = yield call(getList);

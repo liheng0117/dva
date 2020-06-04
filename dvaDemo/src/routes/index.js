@@ -1,6 +1,6 @@
-import React from 'react'
-import { Router, Route, Switch } from 'dva/router'
-import { Home } from './assembly'
+import React from "react";
+import { Router, Route, Switch } from "dva/router";
+import { Home } from "./assembly";
 
 function RouterConfig({ history }) {
   return (

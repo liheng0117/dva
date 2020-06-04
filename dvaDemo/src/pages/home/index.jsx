@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'dva'
-import { Table, Space, Button, Modal, Form, Input } from 'antd'
-import './style.less'
+import React, { Component } from "react";
+import { connect } from "dva";
+import { Table, Space, Button, Modal, Form, Input } from "antd";
+import "./style.less";
 
 const { confirm } = Modal;
 
@@ -13,18 +13,23 @@ const { confirm } = Modal;
 export default class Home extends Component {
   state = {
     visible: false,
-    title: '',
+    title: "",
     dataInfo: [],
   };
+  formRef = React.createRef();
   addClick = () => {
     this.showModal();
     this.setState({
       title: "添加",
+      dataInfo: [],
     });
+    setTimeout(() => {
+      this.formRef.current.resetFields();
+    }, 0);
   };
   handleCancel = () => {
     this.showModal();
-  }
+  };
   showModal = () => {
     this.setState({
       visible: !this.state.visible,
@@ -45,9 +50,9 @@ export default class Home extends Component {
         payload: values,
       });
     }
-    this.setState({
-      dataInfo: [],
-    });
+    // this.setState({
+    //   dataInfo: [],
+    // });
   };
   // 删除
   handleDel = (item) => {
@@ -106,13 +111,6 @@ export default class Home extends Component {
       ),
     },
   ];
-  componentDidMount() {
-    this.props.dispatch({
-      // 命名空间/触发的方法名
-      type: "home/getDataList",
-    });
-  }
-
   render() {
     return (
       <div>
@@ -132,6 +130,7 @@ export default class Home extends Component {
             name="nest-messages"
             onFinish={this.onFinish}
             initialValues={this.state.dataInfo}
+            ref={this.formRef}
           >
             <Form.Item
               name="name"
